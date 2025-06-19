@@ -1,41 +1,26 @@
-// 기존 String 클래스
-class stringBox {
-    private String content;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-    public  stringBox(String content) {
-        this.content = content;
+class Box{
+    public static <T> void displayArray(List<T> array){
+        for(T element: array)
+            System.out.println(element);
     }
 }
-
-// 제네릭 클래스
-class Box<T> {
-    private T content;
-
-    public Box(T content) {
-        this.content = content;
-    }
-
-    public T getContent(){
-        return content;
-    }
-
-    public void setContent(T content){
-        this.content = content;
-    }
-
-    public <E> void printContent(E extraInfo){
-        System.out.println("Content: " + content + ", Extra: " + extraInfo);
-    }
-}
-
 
 public class Main {
     public static void main(String[] args) {
-        Box<String> stringBox = new Box<>("스트링 박스");
+        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5));
 
-        System.out.println(stringBox.getContent());
-        stringBox.setContent("교체");
-        System.out.println(stringBox.getContent());
-        stringBox.printContent("추가 내용");
+        numbers.add(6);
+        numbers.remove(4);
+
+        List<String> words = new ArrayList<>(Arrays.asList("apple", "banana", "cherry"));
+
+        Box.displayArray(numbers);
+        Box.displayArray(words);
+
+
     }
 }
