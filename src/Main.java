@@ -2,18 +2,20 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Main {
-    // 리스트 내용 출력만 하는 구조. 어떤 형태로 동작하든 상관없음
-    public static void printElements(List<?> list){
-        for(Object o : list){
-            System.out.println(o);
+    public static double sumList(List<? extends Number> list){
+        double sum = 0;
+
+        for(Number n : list){
+            sum += n.doubleValue();
         }
+        return sum;
     }
 
     public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(1, 2, 3);
-        List<String> words = Arrays.asList("A", "B", "CC");
+        List<Integer> intList = Arrays.asList(10, 20, 30);
+        List<Double> doubleList = Arrays.asList(0.1, 0.2);
 
-        printElements(numbers);
-        printElements(words);
+        System.out.println("합계 : " + sumList(intList));
+        System.out.println("합계 : " + sumList(doubleList));
     }
 }
